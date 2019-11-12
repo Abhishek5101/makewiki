@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from wiki.models import Page
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.http import HttpResponse
 
 
 class PageList(ListView):
@@ -15,7 +16,11 @@ class PageList(ListView):
 
     def get(self, request):
         """ Returns a list of wiki pages. """
-        pass
+        all_pages = get_list_or_404(Page)
+        context = {
+            'all_pages': all_pages
+        }
+        return render(request, 'base.html', context)
 
 
 class PageDetailView(DetailView):
@@ -39,7 +44,11 @@ class PageDetailView(DetailView):
 
     def get(self, request, slug):
         """ Returns a specific of wiki page by slug. """
-        pass
+        page = get_object_or_404(Page, slug=slug)
+        context = {
+            "page": page
+        }
+        return render(request, 'page.html', context)
 
     def post(self, request, slug):
         pass
