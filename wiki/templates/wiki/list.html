@@ -1,1 +1,14 @@
-{ includes 'makewiki/base.html' }
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Wiki Articles</h1>
+
+<ul>
+    {% for page in pages %}
+    <li><a href="{{ page.slug }}">{{ page.title }}</a></li>
+    {% empty %}
+    <li>No pages yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

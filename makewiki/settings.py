@@ -130,3 +130,5 @@ STATIC_URL = '/static/'
 
 # wiki app settings
 WIKI_PAGE_TITLE_MAX_LENGTH = 600
+
+

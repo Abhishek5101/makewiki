@@ -20,7 +20,7 @@ class PageList(ListView):
         context = {
             'all_pages': all_pages
         }
-        return render(request, 'base.html', context)
+        return render(request, 'wiki/list.html', context)
 
 
 class PageDetailView(DetailView):

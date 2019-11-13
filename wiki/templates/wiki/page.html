@@ -1,5 +1,21 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% block content %}
 
-{{ page.title }}
+<h1>{{ page.title }}</h1>
+<h3>Written by: {{ page.author }}</h3>
+<h4>Date Created: {{ page.created }}</h4>
+<h5>Date Modified: {{ page.modified }}</h5>
+<p>Article Text: <br> {{ page.content }}</p>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="POST">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
 {% endblock %}
