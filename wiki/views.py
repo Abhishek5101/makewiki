@@ -16,9 +16,9 @@ class PageList(ListView):
 
     def get(self, request):
         """ Returns a list of wiki pages. """
-        all_pages = get_list_or_404(Page)
+        pages = get_list_or_404(Page)
         context = {
-            'all_pages': all_pages
+            'pages': pages
         }
         return render(request, 'wiki/list.html', context)
 
@@ -48,7 +48,7 @@ class PageDetailView(DetailView):
         context = {
             "page": page
         }
-        return render(request, 'page.html', context)
+        return render(request, 'wiki/page.html', context)
 
     def post(self, request, slug):
         pass
